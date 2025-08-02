@@ -1,3 +1,5 @@
+*Valar Morghulis..*
+
 # 🛍️ GShop - React & Node.js
 
 > Proyek fullstack sederhana untuk belajar JavaScript secara menyeluruh, mulai dari frontend (React) hingga backend (Node.js + MongoDB).
@@ -44,3 +46,4 @@ Proyek ini dibuat dari nol untuk memahami alur kerja **frontend ↔ backend ↔ 
 
 ---
 
+*Valar Dohaeris..*
