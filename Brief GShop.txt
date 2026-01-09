@@ -1,0 +1,39 @@
+﻿GShop - Simple Ecommerce
+
+
+1. Deskripsi Proyek
+GShop adalah sebuah project E-commerce sederhana berbasis website dengan tingkat kesulitan medium. Project ini dibuat dalam rangka memperdalam keterampilan dalam bidang web development. Waktu pengerjaan project ini adalah kurang lebih sepanjang tahun 2026. Metode pengembangan yang digunakan adalah Agile Scrum. TIDAK BOLEH VIBE CODING DALAM PROJECT INI. SEMUA BARIS CODE AKAN DIKETIK MANUAL BERDASARKAN PEMAHAMAN SAYA.  
+2. Scope Proyek
+1. Include (Feature)
+* Autentikasi pengguna (Email dan Google)
+* Search dan Show Product
+* Cart
+* Checkout and Payment
+* Manajemen Profile user
+* Integrasi API eksternal
+* Database Postgre
+* simple invoice
+2. Exclude
+* Dashboard administrator
+* Manajemen toko
+* logistik and shipping
+* multi vendor 
+* sistem refund 
+3. Tech Stack
+1. Frontend
+* Next.js
+* TypeScript
+* Axios
+* NextAuth.js
+* React Hook Form
+* Zod
+2. Backend
+* NestJS
+* TypeScript
+* Primsa ORM
+* PostgreSQl
+* Passpot.js (JWT & Google OAuth)
+* Midtrans SNAP (Sandbox)
+* REST API
+3. API Eksternal
+* Fake Store API
