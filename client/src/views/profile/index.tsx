@@ -1,7 +1,46 @@
 "use client";
+
 import Image from "next/image";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 const ProfileView = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+
+    const data = {
+      fullName,
+      email,
+      phoneNumber,
+      address,
+    };
+
+    alert(`Data Kamu:  ${JSON.stringify(data, null, 2)}`);
+
+    setFullName("");
+    setEmail("");
+    setPhoneNumber("");
+    setAddress("");
+
+    setIsLoading(false);
+  };
+
+  const handleBack = () => {
+    router.push("/");
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="mx-auto w-3/5">
@@ -11,7 +50,7 @@ const ProfileView = () => {
             Kelola Informasi Seputar Profil Anda
           </h3>
         </div>
-        <hr className="w-2/5 mx-auto text-center my-3 rounded-full border-0 h-1 bg-blue-600" />
+        <hr className="w-3/4 mx-auto text-center my-3 rounded-full border-0 h-1 bg-blue-600" />
         <div className="flex flex-col mt-2 items-center">
           <div className="rounded-full flex my-2 ">
             <Image
@@ -29,45 +68,66 @@ const ProfileView = () => {
           </div>
         </div>
 
-        <div className="form-input flex flex-col items-center my-8">
-          <div className="name flex flex-col w-1/1 mb-4">
-            <label>Nama Lengkap</label>
-            <input
-              type="text"
-              className="border border-gray-500 rounded-md mt-1 p-1"
-            />
+        <form onSubmit={handleSubmit}>
+          <div className="form-input flex flex-col items-center my-8">
+            <div className="name flex flex-col w-1/1 mb-4">
+              <label>Nama Lengkap</label>
+              <input
+                type="text"
+                className="border border-gray-500 rounded-md mt-1 p-1"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="email flex flex-col w-1/1 mb-4">
+              <label>Email</label>
+              <input
+                type="email"
+                className="border border-gray-500 rounded-md mt-1 p-1"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="phone-number  flex flex-col w-1/1 mb-4">
+              <label>Nomor Telepon</label>
+              <input
+                type="text"
+                className="border border-gray-500 rounded-md mt-1 p-1"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
+            </div>
+            <div className="address  flex flex-col w-1/1 mb-4">
+              <label>Alamat</label>
+              <input
+                type="text"
+                className="border border-gray-500 rounded-md mt-1 p-1"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </div>
           </div>
-          <div className="email flex flex-col w-1/1 mb-4">
-            <label>Email</label>
-            <input
-              type="text"
-              className="border border-gray-500 rounded-md mt-1 p-1"
-            />
-          </div>
-          <div className="phone-number  flex flex-col w-1/1 mb-4">
-            <label>Nomor Telepon</label>
-            <input
-              type="text"
-              className="border border-gray-500 rounded-md mt-1 p-1"
-            />
-          </div>
-          <div className="address  flex flex-col w-1/1 mb-4">
-            <label>Alamat</label>
-            <input
-              type="text"
-              className="border border-gray-500 rounded-md mt-1 p-1"
-            />
-          </div>
-        </div>
 
-        <div className="flex justify-between">
-          <button className="back border-2 text-blue-500 rounded-md px-3">
-            Kembali
-          </button>
-          <button className="save border-2 text-blue-500 rounded-md px-3">
-            Simpan
-          </button>
-        </div>
+          <div className="flex justify-between">
+            <button
+              className="back border-2 text-blue-500 rounded-md px-3"
+              onClick={handleBack}
+            >
+              Kembali
+            </button>
+            <button
+              className="save border-2 text-blue-500 rounded-md px-3"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Menyimpan" : "Simpan"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
