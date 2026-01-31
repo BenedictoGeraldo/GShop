@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import BackModal from "@/components/backModal";
+import SaveModal from "@/components/saveModal";
 
 const ProfileView = () => {
   const [fullName, setFullName] = useState("");
@@ -13,11 +15,43 @@ const ProfileView = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isBackModalOpen, setIsBackModalOpen] = useState(false);
+  const [isFormChanged, setIsFormChanged] = useState(false);
+
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+
+  const formRef = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleBackClick = () => {
+    if (!isFormChanged) {
+      router.push("/");
+    } else {
+      setIsBackModalOpen(true);
+    }
+  };
 
+  const handleSaveClick = () => {
+    if (!formRef.current) return;
+
+    if (!formRef.current.checkValidity()) {
+      formRef.current.reportValidity();
+      return;
+    }
+
+    setIsSaveModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsBackModalOpen(false);
+  };
+
+  const handleBackConfirm = () => {
+    setIsBackModalOpen(false);
+    router.push("/");
+  };
+
+  const submitForm = () => {
     setIsLoading(true);
 
     const data = {
@@ -27,18 +61,15 @@ const ProfileView = () => {
       address,
     };
 
-    alert(`Data Kamu:  ${JSON.stringify(data, null, 2)}`);
+    alert(`Data Kamu: ${JSON.stringify(data, null, 2)}`);
 
     setFullName("");
     setEmail("");
     setPhoneNumber("");
     setAddress("");
 
+    setIsFormChanged(false);
     setIsLoading(false);
-  };
-
-  const handleBack = () => {
-    router.push("/");
   };
 
   return (
@@ -68,7 +99,7 @@ const ProfileView = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form ref={formRef} onChange={() => setIsFormChanged(true)}>
           <div className="form-input flex flex-col items-center my-8">
             <div className="name flex flex-col w-1/1 mb-4">
               <label>Nama Lengkap</label>
@@ -115,20 +146,37 @@ const ProfileView = () => {
           <div className="flex justify-between">
             <button
               className="back border-2 text-blue-500 rounded-md px-3"
-              onClick={handleBack}
+              onClick={handleBackClick}
+              type="button"
             >
               Kembali
             </button>
             <button
               className="save border-2 text-blue-500 rounded-md px-3"
-              type="submit"
+              type="button"
               disabled={isLoading}
+              onClick={handleSaveClick}
             >
               {isLoading ? "Menyimpan" : "Simpan"}
             </button>
           </div>
         </form>
       </div>
+
+      <BackModal
+        isOpen={isBackModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleBackConfirm}
+      />
+
+      <SaveModal
+        isOpen={isSaveModalOpen}
+        onClose={() => setIsSaveModalOpen(false)}
+        onConfirm={() => {
+          setIsSaveModalOpen(false);
+          submitForm();
+        }}
+      />
     </div>
   );
 };
