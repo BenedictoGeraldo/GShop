@@ -10,7 +10,7 @@ export default function MainLayout({
       <div className="min-h-screen flex flex-col">
         <TopBar />
 
-        <main className="flex-1 pt-15">{children}</main>
+        <main className="flex-1 pt-25">{children}</main>
       </div>
     </>
   );
