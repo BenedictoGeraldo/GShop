@@ -35,7 +35,7 @@ const ProfileView = () => {
     submitForm,
   });
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-1000">
       <div className="mx-auto w-3/5">
         <ProfileHeader />
         <hr className="w-3/4 mx-auto text-center my-3 rounded-full border-0 h-1 bg-blue-600" />
