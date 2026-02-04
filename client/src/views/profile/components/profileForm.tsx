@@ -14,8 +14,8 @@ const ProfileForm = ({
 }: ProfileFormProps) => {
   return (
     <form ref={formRef}>
-      <div className="form-input flex flex-col items-center my-8">
-        <div className="name flex flex-col w-1/1 mb-4">
+      <div className="form-input flex flex-col items-center my-4">
+        <div className="name flex flex-col w-1/1 mb-2">
           <label>Nama Lengkap</label>
           <input
             type="text"
@@ -25,7 +25,7 @@ const ProfileForm = ({
             required
           />
         </div>
-        <div className="email flex flex-col w-1/1 mb-4">
+        <div className="email flex flex-col w-1/1 mb-2">
           <label>Email</label>
           <input
             type="email"
@@ -35,7 +35,7 @@ const ProfileForm = ({
             required
           />
         </div>
-        <div className="phone-number  flex flex-col w-1/1 mb-4">
+        <div className="phone-number  flex flex-col w-1/1 mb-2">
           <label>Nomor Telepon</label>
           <input
             type="text"
@@ -45,7 +45,7 @@ const ProfileForm = ({
             required
           />
         </div>
-        <div className="address  flex flex-col w-1/1 mb-4">
+        <div className="address  flex flex-col w-1/1">
           <label>Alamat</label>
           <input
             type="text"
