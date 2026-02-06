@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouterWithProgress } from "@/hooks/useRouterWithProgress";
+import { progressBar } from "@/lib/nprogress";
 
 interface useProfileModalProps {
   isFormChanged: boolean;
@@ -15,7 +16,7 @@ export const useProfileModal = ({
   const [isBackModalOpen, setIsBackModalOpen] = useState(false);
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
 
-  const router = useRouter();
+  const router = useRouterWithProgress();
 
   const handleBackClick = () => {
     if (!isFormChanged) {
@@ -46,9 +47,10 @@ export const useProfileModal = ({
     setIsSaveModalOpen(false);
   };
 
-  const confirmSave = () => {
+  const confirmSave = async () => {
     setIsSaveModalOpen(false);
-    submitForm();
+
+    await progressBar.wrap(Promise.resolve(submitForm()));
   };
 
   return {
