@@ -35,10 +35,10 @@ const ProfileView = () => {
     submitForm,
   });
   return (
-    <div className="bg-gray-1000">
+    <div className="min-h-screen bg-gray-100 pt-25">
       <div className="mx-auto w-3/5">
         <ProfileHeader />
-        <hr className="w-3/4 mx-auto text-center my-3 rounded-full border-0 h-1 bg-blue-600" />
+        <hr className="w-3/4 mx-auto text-center my-3 rounded-full h-1 bg-blue-600" />
         <ProfileImage />
         <ProfileForm
           formRef={formRef}
