@@ -7,10 +7,10 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className="flex flex-col">
         <TopBar />
 
-        <main className="flex-1 pt-25">{children}</main>
+        <main className="">{children}</main>
       </div>
     </>
   );
