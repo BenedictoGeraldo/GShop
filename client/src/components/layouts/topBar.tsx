@@ -16,7 +16,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="fixed bg-white border-b border-black/20 w-full h-16 flex justify-between">
+    <div className="fixed bg-white border-b border-black/20 w-full h-19 flex justify-between">
       <div className="mx-5 my-2">
         <Image
           src="/gshop-logo.png"
@@ -27,9 +27,9 @@ const TopBar = () => {
         />
       </div>
 
-      <div className="flex my-3 mx-5">
+      <div className="flex my-auto mx-5">
         <button
-          className=" text-[#2461B3] text-xs justify-center items-center font-medium flex mx-4 bg-blue-200 hover:bg-blue-300 px-2 rounded-2xl"
+          className=" text-[#2461B3] text-xs justify-center h-10 items-center font-medium flex mx-4 bg-blue-200 hover:bg-blue-300 px-2 rounded-2xl"
           onClick={handleOrderClick}
         >
           <i className="ri-send-plane-line text-[#2461B3]">
