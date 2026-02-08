@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <h1 className="m-0 p-0">Belajar Next JS</h1>
 
-      <Link href="./albums">Ke Album</Link>
+      <Link href="./checkout">Ke Checkout</Link>
       <br />
       <Link href="./profile">Ke Profile</Link>
     </>
